@@ -1453,8 +1453,8 @@ const REELspacer2r = document.getElementById('spacer-2r-REEL');
 const REELLine1 = document.getElementById('REEL-1');
 const REELLine2 = document.getElementById('REEL-2');
 
-const REELText1 = "EDITOR/COLORIST";
-const REELText2 = "KOSTADIN KOLEV";
+const REELText1 = "Editor/Colorist";
+const REELText2 = "Kostadin Kolev";
 
 var runningREEL = false;
 var hoveringREEL = false;
