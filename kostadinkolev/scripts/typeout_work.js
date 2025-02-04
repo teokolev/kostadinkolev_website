@@ -1596,6 +1596,45 @@ function contactTypeOut() {
 
 
 
+////// MOBILE TYPE ////////////////
+
+
+const emailLineMobile = document.getElementById('email-m');
+const phoneLineMobile = document.getElementById('phone-m');
+
+const EMAILspacerFMobile = document.getElementById('spacer-1f-email-m');
+const EMAILspacerRMobile = document.getElementById('spacer-1r-email-m');
+const PHONEspacerFMobile = document.getElementById('spacer-2f-phone-m');
+const PHONEspacerRMobile = document.getElementById('spacer-2r-phone-m');
+
+var typedMobile = false;
+
+function contactTypeOutMobile() {
+        emailLineMobile.classList.remove('hide-image-fast');
+        emailLineMobile.classList.add('reveal-image-fast');
+
+        EMAILspacerFMobile.classList.remove('hide-image-fast');
+        EMAILspacerFMobile.classList.add('reveal-image-fast');
+        EMAILspacerRMobile.classList.remove('hide-image-fast');
+        EMAILspacerRMobile.classList.add('reveal-image-fast');
+
+        type(emailLineMobile, emailLineMobile, emailText, emptyText, 60);
+
+        setTimeout(() => {
+                phoneLineMobile.classList.remove('hide-image-fast');
+                phoneLineMobile.classList.add('reveal-image-fast');
+        
+                PHONEspacerFMobile.classList.remove('hide-image-fast');
+                PHONEspacerFMobile.classList.add('reveal-image-fast');
+                PHONEspacerRMobile.classList.remove('hide-image-fast');
+                PHONEspacerRMobile.classList.add('reveal-image-fast');
+        
+        
+                type(phoneLineMobile, phoneLineMobile, phoneText, emptyText, 50)
+        }, 1700);
+        typedMobile = true;
+}
+
 
 // function hoverType(ifHovering, ifRunning, ifWaiting, ifFaded, container, line1, line2, spacer1f, spacer2f, spacer1r, spacer2r, text1, text2) {
 //         ifHovering = true;

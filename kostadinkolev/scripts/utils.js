@@ -32,6 +32,9 @@ var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
 var firstReveal = true;
 var firstHide = true;
 
+var firstRevealMobile = true;
+var firstHideMobile = true;
+
 function onScrollReveal() {
         if (checkVisibleHomeDesktop(homeInfo) && homeActive) {
                 homeActive = false;
@@ -115,15 +118,52 @@ function onScrollReveal() {
 
         if (checkVisible(contactContainerMobile)) {
                 mobileActive = true;
-                fullscreenGifMobile.classList.remove('hide-image-fast');
-                fullscreenGifMobile.classList.add('reveal-image-fast');
+                if (firstRevealMobile) {
+                        fullscreenGifMobile.classList.remove('hide-image');
+                        fullscreenGifMobile.classList.remove('hide-image-fast');
+                        fullscreenGifMobile.classList.add('reveal-image-fast');
+
+                        setTimeout(() => {
+                                fullscreenGifMobile.classList.remove('reveal-image-fast');
+                        }, 500);
+
+                        setTimeout(() => {
+                                fullscreenGifMobile.classList.add('shrink');
+                                setTimeout(() => {
+                                        if (!typedMobile) {
+                                                contactTypeOutMobile(); 
+                                        }
+                                        firstRevealMobile = false;
+                                        // fullscreenGif.classList.remove('shrink')
+                                }, 500);
+                        }, 1500);
+                } else {
+                        fullscreenGifMobile.classList.remove('shrink');
+                        fullscreenGifMobile.classList.remove('hide-image');
+                        fullscreenGifMobile.classList.remove('hide-no-shrink');
+                        fullscreenGifMobile.classList.add('no-shrink');
+                }
+
+                // fullscreenGifMobile.classList.remove('hide-image-fast');
+                // fullscreenGifMobile.classList.add('reveal-image-fast');
 
                 contactContainerMobile.classList.remove('hide-image-fast');
                 contactContainerMobile.classList.add('reveal-image-fast');
         } 
-        if ((!checkVisible(contactContainerMobile)) && gifActive) {
-                fullscreenGifMobile.classList.remove('reveal-image-fast');
-                fullscreenGifMobile.classList.add('hide-image-fast');
+        if ((!checkVisible(contactContainerMobile)) && mobileActive) {
+                if (firstHideMobile) {
+                        fullscreenGifMobile.classList.remove('hide-image');
+                        fullscreenGifMobile.classList.remove('shrink');
+                        fullscreenGifMobile.classList.remove('no-shrink');
+                        fullscreenGifMobile.classList.remove('reveal-no-shrink');
+                        fullscreenGifMobile.classList.add('hide-no-shrink');
+                        firstHideMobile = false;
+                } else {
+                        fullscreenGifMobile.classList.remove('hide-image');
+                        fullscreenGifMobile.classList.remove('no-shrink');
+                        fullscreenGifMobile.classList.remove('reveal-no-shrink');
+                        fullscreenGifMobile.classList.add('no-shrink');
+                }
 
                 contactContainerMobile.classList.remove('reveal-image-fast');
                 contactContainerMobile.classList.add('hide-image-fast');

@@ -41,24 +41,24 @@ window.onscroll = function() {
         }
 
 
-        if (checkVisible(contactContainerMobile)) {
-                console.log('show')
-                gifActive = true;
-                fullscreenGifMobile.classList.remove('hide-image-fast');
-                fullscreenGifMobile.classList.add('reveal-image-fast');
+        // if (checkVisible(contactContainerMobile)) {
+        //         // console.log('show')
+        //         gifActive = true;
+        //         fullscreenGifMobile.classList.remove('hide-image-fast');
+        //         fullscreenGifMobile.classList.add('reveal-image-fast');
 
-                contactContainerMobile.classList.remove('hide-image-fast');
-                contactContainerMobile.classList.add('reveal-image-fast');
-        } 
-        if ((!checkVisible(contactContainerMobile)) && gifActive) {
-                console.log('hide');
-                fullscreenGifMobile.classList.remove('reveal-image-fast');
-                fullscreenGifMobile.classList.add('hide-image-fast');
+        //         contactContainerMobile.classList.remove('hide-image-fast');
+        //         contactContainerMobile.classList.add('reveal-image-fast');
+        // } 
+        // if ((!checkVisible(contactContainerMobile)) && gifActive) {
+        //         // console.log('hide');
+        //         fullscreenGifMobile.classList.remove('reveal-image-fast');
+        //         fullscreenGifMobile.classList.add('hide-image-fast');
 
-                contactContainerMobile.classList.remove('reveal-image-fast');
-                contactContainerMobile.classList.add('hide-image-fast');
-                gifActive = false;
-        }
+        //         contactContainerMobile.classList.remove('reveal-image-fast');
+        //         contactContainerMobile.classList.add('hide-image-fast');
+        //         gifActive = false;
+        // }
 }
 
 function checkVisibleHome(elm) {
