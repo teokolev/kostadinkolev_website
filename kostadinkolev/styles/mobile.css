@@ -297,7 +297,7 @@ span {
         position: relative;
         top: 10vh;
         opacity: 0;
-        /* border: solid 1px fuchsia; */
+        border: solid 1px fuchsia;
         overflow: hidden;
 }
 
@@ -322,6 +322,7 @@ span {
         font-size: 12px;
         color: whitesmoke;
         /* border: solid 2px yellow; */
+        /* background: green; */
 }
 
 /* .temp {
@@ -440,7 +441,22 @@ iframe {
 }
 
 
+.shrink {
+        animation: shrink 0.1s ease-out forwards;
+}
 
+.hide-no-shrink {
+        animation: hideImage 0.5s forwards ease, shrink 0s ease-out forwards;
+        /* transform: scale(0.035); */
+}
+
+.reveal-no-shrink {
+        animation: revealImage 0.5s forwards ease, shrink 0s ease-out forwards;
+}
+
+.no-shrink {
+        animation: shrink 0s ease-out forwards;
+}
 
 
 
@@ -750,6 +766,8 @@ iframe {
         
         .container {
                 width: 320vw;
+                /* width: 11000px;
+                max-width: 11000px; */
                 height: 100vh !important;
                 max-height: 100vh !important;
                 display: flex;
@@ -757,15 +775,21 @@ iframe {
                 background: black;
                 position: relative;
                 overflow-y: hidden;
-                /* border: solid 2px yellow; */
+                /* border: solid 1px yellow; */
         }
 
         .pin-spacer {
-                max-width: 320vw !important;
+                /* height: 100vh !important; */
+                width: 320vw !important;
+                /* border: solid 1px orange; */
+                /* overflow: hidden !important; */
+                /* padding: 0 !important; */
+                /* overflow-x: hidden; */
         }
         
         .panel {
-                width: 300vw;
+                /* width: 320vw; */
+                width: 11000px;
                 height: 100vw;
                 position: fixed;
                 background: transparent;
@@ -774,8 +798,9 @@ iframe {
         
         .red {
                 height: 100vh;
-                width: 320vw;
-                left: 105vw;
+                /* width: 320vw; */
+                width: max(320vw, 2700px);
+                left: 118vw;
         }
         
         .titles {
@@ -801,20 +826,19 @@ iframe {
         }
 
         .titles > * {
-                /* border: solid 1px red; */
                 /* min-width: fit-content; */
-                width: fit-content;
+                min-width: fit-content;
         }
 
-        .cz-info {
+        .project-info {
                 /* border: solid 1px red; */
-                width: 120px;
+                width: 130px;
                 height: 50px;
                 position: absolute;
                 top: 30px;
         }
 
-        .test-box-cz {
+        .test-box-project {
                 display: flex;
                 flex-direction: row;
                 /* background: #f5f5f5; */
@@ -822,15 +846,9 @@ iframe {
                 /* border: solid 1px yellow; */
         }
 
-        #CZ-1 {
+        .test-box-project > div {
                 background-color: #f5f5f5;
                 opacity: 0;
-        }
-
-        #CZ-2 {
-                background-color: #f5f5f5;
-                opacity: 0;
-                
         }
 
         #line-2 {
@@ -864,16 +882,19 @@ iframe {
                 font-weight: 300;
                 font-size: 12px;
                 color: whitesmoke;
-                gap: 10px;
-                width: 250px;
-                height: 66px;
+                gap: -2px;
+                /* width: 250px; */
+                width: fit-content;
+                height: 36px;
                 position: fixed;
-                top: 87vh;
-                left: calc(200vw - 31px);
-                margin-left: 22vw;
-                margin-right: 63vw;
+                top: 49vh;
+                left: 253vw;
+                /* left: max(207vw, 1900px); */
+                /* margin-left: 22vw; */
+                /* margin-right: 63vw; */
                 opacity: 0;
-                /* border: solid 2px orchid; */
+                /* background: red; */
+                /* border: solid 1px orchid; */
         }
         
         a {
@@ -891,6 +912,7 @@ iframe {
                 /* background: red; */
                 top: 0;
                 /* object-fit: cover; */
+                /* border: solid 1px green; */
         }
         
         #work-video {
@@ -1004,7 +1026,12 @@ iframe {
 } */
 
 
-
+@keyframes shrink {
+        0% {transform: scale(1);}
+        25% {transform: scale(0.6);}
+        75% {transform: scale(0.4);}
+        100% {transform: scale(0.09);}
+}
 
 
 

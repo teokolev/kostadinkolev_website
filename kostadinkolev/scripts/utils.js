@@ -27,7 +27,10 @@ var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
         document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight) - 1102;
 
 
-console.log(limit);
+// console.log(limit);
+
+var firstReveal = true;
+var firstHide = true;
 
 function onScrollReveal() {
         if (checkVisibleHomeDesktop(homeInfo) && homeActive) {
@@ -46,16 +49,64 @@ function onScrollReveal() {
         if (checkVisibleDesktop(contactContainer)) {
                 initLogo();
                 gifActive = true;
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image-fast');
+                if (firstReveal) {
+                        fullscreenGif.classList.remove('hide-image');
+                        fullscreenGif.classList.remove('hide-image-fast');
+                        fullscreenGif.classList.add('reveal-image-fast');
+
+                        setTimeout(() => {
+                                fullscreenGif.classList.remove('reveal-image-fast');
+                        }, 500);
+
+                        setTimeout(() => {
+                                fullscreenGif.classList.add('shrink');
+                                setTimeout(() => {
+                                        if (!typed) {
+                                                contactTypeOut(); 
+                                        }
+                                        firstReveal = false;
+                                        // fullscreenGif.classList.remove('shrink')
+                                }, 500);
+                        }, 1500);
+                } else {
+                        fullscreenGif.classList.remove('shrink');
+                        fullscreenGif.classList.remove('hide-image');
+                        fullscreenGif.classList.remove('hide-no-shrink');
+                        fullscreenGif.classList.add('no-shrink');
+                }
+                
+                // fullscreenGif.classList.remove('hide-no-shrink');
+                // fullscreenGif.classList.add('reveal-no-shrink');
+                
+                
 
                 contactContainer.classList.remove('hide-image-fast');
                 contactContainer.classList.add('reveal-image-fast');
         } 
         if ((!checkVisibleDesktop(contactContainer)) && gifActive) {
 
-                fullscreenGif.classList.remove('reveal-image-fast');
-                fullscreenGif.classList.add('hide-image-fast');
+                if (firstHide) {
+                        fullscreenGif.classList.remove('hide-image');
+                        fullscreenGif.classList.remove('shrink');
+                        fullscreenGif.classList.remove('no-shrink');
+                        fullscreenGif.classList.remove('reveal-no-shrink');
+                        fullscreenGif.classList.add('hide-no-shrink');
+                        firstHide = false;
+                } else {
+                        fullscreenGif.classList.remove('hide-image');
+                        fullscreenGif.classList.remove('no-shrink');
+                        fullscreenGif.classList.remove('reveal-no-shrink');
+                        fullscreenGif.classList.add('hide-no-shrink');
+                }
+
+                // fullscreenGif.classList.remove('shrink');
+                // fullscreenGif.classList.add('hide-no-shrink');
+
+                // fullscreenGif.classList.remove('reveal-no-shrink');
+                // fullscreenGif.classList.add('hide-no-shrink');
+
+                // fullscreenGif.classList.remove('reveal-image-fast');
+                // fullscreenGif.classList.add('hide-image-fast');
 
                 contactContainer.classList.remove('reveal-image-fast');
                 contactContainer.classList.add('hide-image-fast');

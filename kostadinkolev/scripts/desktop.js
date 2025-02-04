@@ -54,7 +54,7 @@ function initLogo() {
         }
         workVideo.src = "/assets/MP4/LOGO.mp4";
         workVideo.currentTime = 0.4;
-        workVideo.play(); 
+        workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
                         workVideo.currentTime = 0.01;
