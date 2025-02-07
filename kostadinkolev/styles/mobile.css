@@ -323,7 +323,7 @@ span {
         font-weight: 300;
         font-size: 12px;
         color: whitesmoke;
-        /* border: solid 2px yellow; */
+        border: solid 2px yellow;
         /* background: green; */
 }
 
@@ -674,6 +674,7 @@ iframe {
         
         span {
                 background-color: #f5f5f5;
+                border: solid 1px #f5f5f5;
                 width: 2px;
                 opacity: 0;
         }
@@ -901,7 +902,7 @@ iframe {
                 width: fit-content;
                 height: 36px;
                 position: fixed;
-                top: 49vh;
+                top: 49.1vh;
                 left: 253vw;
                 /* left: max(207vw, 1900px); */
                 /* margin-left: 22vw; */
@@ -1044,7 +1045,7 @@ iframe {
         0% {transform: scale(1);}
         25% {transform: scale(0.6);}
         75% {transform: scale(0.4);}
-        100% {transform: scale(0.09);}
+        100% {transform: scale(0.075);}
 }
 
 

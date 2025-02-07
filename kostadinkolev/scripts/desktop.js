@@ -52,7 +52,7 @@ function initLogo() {
         if (gifActive) {
                 return;
         }
-        workVideo.src = "/assets/MP4/LOGO.mp4";
+        workVideo.src = "assets/MP4/LOGO.mp4";
         workVideo.currentTime = 0.4;
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
@@ -131,7 +131,7 @@ contraluzText.addEventListener('click', contraluzVideo, false);
 var workVideo = document.getElementById("work-video");
 
 function initContraluz() {
-        workVideo.src = "/assets/MP4/CONTRALUZ.mp4";
+        workVideo.src = "assets/MP4/CONTRALUZ.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -194,7 +194,7 @@ contraluzText.addEventListener('mouseleave', hideBigGifContraluz, false);
 // ------------------------------------------------------------------------------------------ //
 
 function initAdidas() {
-        workVideo.src = "/assets/MP4/ADIDAS.mp4";
+        workVideo.src = "assets/MP4/ADIDAS.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -206,7 +206,7 @@ function initAdidas() {
 
 function showBigGifAdidas() {
         initAdidas();
-        // fullscreenGif.style.background = 'url(/assets/NOSCHT_WEBSITE_GIFS_ADIDAS.gif)';
+        // fullscreenGif.style.background = 'url(assets/NOSCHT_WEBSITE_GIFS_ADIDAS.gif)';
         // fullscreenGif.style.backgroundSize = 'cover';
         if (fullscreenGif.classList.contains('hide-image-fast')){
                 fullscreenGif.classList.remove('hide-image-fast');
@@ -260,7 +260,7 @@ function adidasVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initFutureland() {
-        workVideo.src = "/assets/MP4/FUTURELAND.mp4";
+        workVideo.src = "assets/MP4/FUTURELAND.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -322,7 +322,7 @@ function futurelandVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initBose() {
-        workVideo.src = "/assets/MP4/BOSE.mp4";
+        workVideo.src = "assets/MP4/BOSE.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -393,7 +393,7 @@ function hideTitles() {
 // ------------------------------------------------------------------------------------------ //
 
 function initCC() {
-        workVideo.src = "/assets/MP4/CC.mp4";
+        workVideo.src = "assets/MP4/CC.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -457,7 +457,7 @@ function ccVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initMarc() {
-        workVideo.src = "/assets/MP4/MARC JACOBS.mp4";
+        workVideo.src = "assets/MP4/MARC JACOBS.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -521,7 +521,7 @@ function marcVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initUrban() {
-        workVideo.src = "/assets/MP4/UD.mp4";
+        workVideo.src = "assets/MP4/UD.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -585,7 +585,7 @@ function urbanVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initPolestar() {
-        workVideo.src = "/assets/MP4/POLESTAR.mp4";
+        workVideo.src = "assets/MP4/POLESTAR.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -649,7 +649,7 @@ function polestarVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initBambii() {
-        workVideo.src = "/assets/MP4/BAMBII.mp4";
+        workVideo.src = "assets/MP4/BAMBII.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -713,7 +713,7 @@ function bambiiVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initBeatty() {
-        workVideo.src = "/assets/MP4/PARTYS OVER.mp4";
+        workVideo.src = "assets/MP4/PARTYS OVER.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -777,7 +777,7 @@ function beattyVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initYSL() {
-        workVideo.src = "/assets/MP4/LNX REBEL.mp4";
+        workVideo.src = "assets/MP4/LNX REBEL.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -841,7 +841,7 @@ function yslVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initBulgaria() {
-        workVideo.src = "/assets/MP4/CHILDS HOME.mp4";
+        workVideo.src = "assets/MP4/CHILDS HOME.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -905,7 +905,7 @@ function bulgariaVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initBazarr() {
-        workVideo.src = "/assets/MP4/BAZAAR.mp4";
+        workVideo.src = "assets/MP4/BAZAAR.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -969,7 +969,7 @@ function bazaarVideo() {
 // ------------------------------------------------------------------------------------------ //
 
 function initReel() {
-        workVideo.src = "/assets/MP4/REEL.mp4";
+        workVideo.src = "assets/MP4/REEL.mp4";
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
