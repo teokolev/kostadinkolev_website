@@ -35,6 +35,9 @@ var firstHide = true;
 var firstRevealMobile = true;
 var firstHideMobile = true;
 
+var logo = document.getElementById('logo');
+const contactBox = document.getElementById('contact-box');
+
 function onScrollReveal() {
         if (checkVisibleHomeDesktop(homeInfo) && homeActive) {
                 homeActive = false;
@@ -48,34 +51,67 @@ function onScrollReveal() {
                 homeGif.classList.add('reveal-image');
         }
 
-
+        
         if (checkVisibleDesktop(contactContainer)) {
-                initLogo();
+                initLogoTEST();
+                // initLogo();
                 gifActive = true;
                 if (firstReveal) {
-                        fullscreenGif.classList.remove('hide-image');
-                        fullscreenGif.classList.remove('hide-image-fast');
-                        fullscreenGif.classList.add('reveal-image-fast');
+                        logo.classList.remove('hide-image');
+                        logo.classList.remove('hide-image-fast');
+                        logo.classList.add('reveal-image-fast');
 
                         setTimeout(() => {
-                                fullscreenGif.classList.remove('reveal-image-fast');
+                                logo.classList.remove('reveal-image-fast');
+                                logo.style.opacity = '1';
                         }, 500);
 
                         setTimeout(() => {
-                                fullscreenGif.classList.add('shrink');
+                                logo.classList.add('shrink');
+                                
                                 setTimeout(() => {
                                         if (!typed) {
                                                 contactTypeOut(); 
                                         }
                                         firstReveal = false;
+                                        // logo.style.position = 'static';
+                                        // logo.style.maxWidth = '1948px';
+                                        // logo.style.minWidth = '1948px';
+                                        // logo.style.minHeight = '1223px';
+                                        // logo.style.maxHeight = '1223px';
+
+                                        var contactLogoPosition = logo.getBoundingClientRect();
+                                        console.log(contactLogoPosition);
+                                        logo.style.position = 'static';
+                                        logo.style.maxWidth = (contactLogoPosition.width / 0.075) + 'px';
+                                        logo.style.minWidth = (contactLogoPosition.width / 0.075) + 'px';
+                                        logo.style.minHeight = (contactLogoPosition.height / 0.075) + 'px';
+                                        logo.style.maxHeight = (contactLogoPosition.height / 0.075) + 'px';
+                                        // var contactTypeOutPosition = contactContainer.getBoundingClientRect();
+                                        
+                                        // console.log(contactTypeOutPosition);
+                                        // contactLogoPosition.height - contactTypeOutPosition.height +
+                                        // contactTypeOutPosition.width - contactLogoPosition.width + 
+                                        // contactContainer.style.height = contactLogoPosition.height + 'px';
+                                        // contactContainer.style.top = ((contactLogoPosition.height / 2) + contactLogoPosition.top) + 'px';
+                                        // contactContainer.style.left = (contactLogoPosition.left) + 'px';
                                         // fullscreenGif.classList.remove('shrink')
                                 }, 500);
+                                // setTimeout(() => {
+                                //         var contactLogoPosition = logo.getBoundingClientRect();
+                                //         // console.log(contactLogoPosition);
+                                //         logo.classList.remove('shrink');
+                                //         logo.style.height = contactLogoPosition.height + 'px';
+                                //         logo.style.width = contactLogoPosition.width + 'px';
+                                //         logo.style.top = contactLogoPosition.top + 'px';
+                                //         logo.style.left = contactLogoPosition.left + 'px';
+                                // }, 1000);
                         }, 1500);
                 } else {
-                        fullscreenGif.classList.remove('shrink');
-                        fullscreenGif.classList.remove('hide-image');
-                        fullscreenGif.classList.remove('hide-no-shrink');
-                        fullscreenGif.classList.add('no-shrink');
+                        logo.classList.remove('shrink');
+                        logo.classList.remove('hide-image');
+                        logo.classList.remove('hide-no-shrink');
+                        logo.classList.add('no-shrink');
                 }
                 
                 // fullscreenGif.classList.remove('hide-no-shrink');
@@ -89,17 +125,17 @@ function onScrollReveal() {
         if ((!checkVisibleDesktop(contactContainer)) && gifActive) {
 
                 if (firstHide) {
-                        fullscreenGif.classList.remove('hide-image');
-                        fullscreenGif.classList.remove('shrink');
-                        fullscreenGif.classList.remove('no-shrink');
-                        fullscreenGif.classList.remove('reveal-no-shrink');
-                        fullscreenGif.classList.add('hide-no-shrink');
+                        logo.classList.remove('hide-image');
+                        logo.classList.remove('shrink');
+                        logo.classList.remove('no-shrink');
+                        logo.classList.remove('reveal-no-shrink');
+                        logo.classList.add('hide-no-shrink');
                         firstHide = false;
                 } else {
-                        fullscreenGif.classList.remove('hide-image');
-                        fullscreenGif.classList.remove('no-shrink');
-                        fullscreenGif.classList.remove('reveal-no-shrink');
-                        fullscreenGif.classList.add('hide-no-shrink');
+                        logo.classList.remove('hide-image');
+                        logo.classList.remove('no-shrink');
+                        logo.classList.remove('reveal-no-shrink');
+                        logo.classList.add('hide-no-shrink');
                 }
 
                 // fullscreenGif.classList.remove('shrink');
@@ -129,6 +165,7 @@ function onScrollReveal() {
 
                         setTimeout(() => {
                                 fullscreenGifMobile.classList.add('shrink');
+                                
                                 setTimeout(() => {
                                         if (!typedMobile) {
                                                 contactTypeOutMobile(); 

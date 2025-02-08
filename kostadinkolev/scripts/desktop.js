@@ -63,6 +63,19 @@ function initLogo() {
         }, false);
 };
 
+var logoVideo = document.getElementById('logo-video');
+
+function initLogoTEST() {
+        logoVideo.currentTime = 0.4;
+        logoVideo.play();
+        logoVideo.addEventListener('timeupdate', funcloop=function(){
+                if (logoVideo.currentTime > (logoVideo.duration - 0.01)) {
+                        logoVideo.currentTime = 0.01;
+                        logoVideo.play();
+                }
+        }, false);
+};
+
 
 var videoActive = false;
 var player = new Vimeo.Player(document.getElementById("vimeo"));
