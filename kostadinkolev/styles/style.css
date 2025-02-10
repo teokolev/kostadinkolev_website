@@ -358,7 +358,6 @@ a {
         position: absolute;
         /* top: -20vh; */
         z-index: -1;
-        /* border: solid 2px yellow; */
 }
 
 #work-video {
@@ -446,7 +445,6 @@ iframe {
         display: flex;
         flex-direction: row;
         color: black;
-        /* border: solid 1px yellow; */
 }
 
 .test-box-project > div {
@@ -470,12 +468,6 @@ iframe {
 
 .no-shrink {
         animation: shrink 0s ease-out forwards;
-        /* position: absolute !important;
-        top: 0 !important; */
-        /* border: solid 12px red; */
-        /* position: fixed !important; */
-        /* top: 49.5vh !important; */
-        /* transform: translateY(-49.5vh); */
 }
 
 
