@@ -865,7 +865,7 @@ iframe {
                 width: 212px;
                 height: 36px;
                 position: absolute;
-                margin-left: 245px;
+                /* margin-left: 245px; */
                 margin-top: 20px;
                 opacity: 0;
         }

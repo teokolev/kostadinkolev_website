@@ -78,6 +78,13 @@ function onScrollReveal() {
 
                                         var contactLogoPosition = logo.getBoundingClientRect();
                                         logo.style.position = 'static';
+                                        console.log(window.innerWidth);
+                                        if (window.innerWidth > 1600) {
+                                                contactContainer.style.marginLeft = 252 + "px";
+                                        } else {
+                                                contactContainer.style.marginLeft = 245 + "px";
+                                        }
+                                        
                                         logo.style.maxWidth = (contactLogoPosition.width / 0.075) + 'px';
                                         logo.style.minWidth = (contactLogoPosition.width / 0.075) + 'px';
                                         logo.style.minHeight = (contactLogoPosition.height / 0.075) + 'px';
