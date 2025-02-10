@@ -34,6 +34,7 @@ var firstHide = true;
 
 var firstRevealMobile = true;
 var firstHideMobile = true;
+var mobileActive = false;
 
 var logo = document.getElementById('logo');
 const contactBox = document.getElementById('contact-box');
@@ -74,38 +75,14 @@ function onScrollReveal() {
                                                 contactTypeOut(); 
                                         }
                                         firstReveal = false;
-                                        // logo.style.position = 'static';
-                                        // logo.style.maxWidth = '1948px';
-                                        // logo.style.minWidth = '1948px';
-                                        // logo.style.minHeight = '1223px';
-                                        // logo.style.maxHeight = '1223px';
 
                                         var contactLogoPosition = logo.getBoundingClientRect();
-                                        console.log(contactLogoPosition);
                                         logo.style.position = 'static';
                                         logo.style.maxWidth = (contactLogoPosition.width / 0.075) + 'px';
                                         logo.style.minWidth = (contactLogoPosition.width / 0.075) + 'px';
                                         logo.style.minHeight = (contactLogoPosition.height / 0.075) + 'px';
                                         logo.style.maxHeight = (contactLogoPosition.height / 0.075) + 'px';
-                                        // var contactTypeOutPosition = contactContainer.getBoundingClientRect();
-                                        
-                                        // console.log(contactTypeOutPosition);
-                                        // contactLogoPosition.height - contactTypeOutPosition.height +
-                                        // contactTypeOutPosition.width - contactLogoPosition.width + 
-                                        // contactContainer.style.height = contactLogoPosition.height + 'px';
-                                        // contactContainer.style.top = ((contactLogoPosition.height / 2) + contactLogoPosition.top) + 'px';
-                                        // contactContainer.style.left = (contactLogoPosition.left) + 'px';
-                                        // fullscreenGif.classList.remove('shrink')
                                 }, 500);
-                                // setTimeout(() => {
-                                //         var contactLogoPosition = logo.getBoundingClientRect();
-                                //         // console.log(contactLogoPosition);
-                                //         logo.classList.remove('shrink');
-                                //         logo.style.height = contactLogoPosition.height + 'px';
-                                //         logo.style.width = contactLogoPosition.width + 'px';
-                                //         logo.style.top = contactLogoPosition.top + 'px';
-                                //         logo.style.left = contactLogoPosition.left + 'px';
-                                // }, 1000);
                         }, 1500);
                 } else {
                         logo.classList.remove('shrink');
@@ -137,15 +114,6 @@ function onScrollReveal() {
                         logo.classList.remove('reveal-no-shrink');
                         logo.classList.add('hide-no-shrink');
                 }
-
-                // fullscreenGif.classList.remove('shrink');
-                // fullscreenGif.classList.add('hide-no-shrink');
-
-                // fullscreenGif.classList.remove('reveal-no-shrink');
-                // fullscreenGif.classList.add('hide-no-shrink');
-
-                // fullscreenGif.classList.remove('reveal-image-fast');
-                // fullscreenGif.classList.add('hide-image-fast');
 
                 contactContainer.classList.remove('reveal-image-fast');
                 contactContainer.classList.add('hide-image-fast');
@@ -209,7 +177,7 @@ function onScrollReveal() {
 };
 
 gifActive = false;
-mobileActivee = false;
+mobileActive = false;
 homeActive = true;
 window.onscroll = function() { onScrollReveal() };
 

@@ -68,10 +68,10 @@ const homeInfo2 = document.getElementById('name-line-2');
 const homeInfo3 = document.getElementById('name-line-3');
 const homeInfo4 = document.getElementById('name-line-4');
 
-const homeInfoText1 = "is an NYC based Editor excelling in Branded";
-const homeInfoText2 = "Advertisements, TVC's and Documentaries.";
-const homeInfoText3 = "Always in the mix; finger on the pulse; inside and";
-const homeInfoText4 = "ahead of culture; dedicated to the next generation.";
+const homeInfoText1 = "Commercials";
+const homeInfoText2 = "Documentaries";
+const homeInfoText3 = "Music Videos";
+const homeInfoText4 = "TVC's";
 
 var runningName = false;
 var hoveringName = false;
@@ -99,7 +99,7 @@ nameText.addEventListener('mouseover', () => {
     spacer1r.classList.remove('hide-image-fast');
     spacer1r.classList.add('reveal-image-fast');
 
-    type(homeInfo1, homeInfo1, homeInfoText1, emptyText, 20);
+    type(homeInfo1, homeInfo1, homeInfoText1, emptyText, 40);
 
     setTimeout(() => {
         homeInfo2.classList.remove('hide-image-fast');
@@ -111,8 +111,8 @@ nameText.addEventListener('mouseover', () => {
         spacer2r.classList.add('reveal-image-fast');
 
 
-        type(homeInfo2, homeInfo2, homeInfoText2, emptyText, 20)
-    }, 1000);
+        type(homeInfo2, homeInfo2, homeInfoText2, emptyText, 40)
+    }, 700);
 
     setTimeout(() => {
         homeInfo3.classList.remove('hide-image-fast');
@@ -124,8 +124,8 @@ nameText.addEventListener('mouseover', () => {
         spacer3r.classList.add('reveal-image-fast');
 
 
-        type(homeInfo3, homeInfo3, homeInfoText3, emptyText, 20)
-    }, 1750);
+        type(homeInfo3, homeInfo3, homeInfoText3, emptyText, 40)
+    }, 1500);
 
     setTimeout(() => {
         homeInfo4.classList.remove('hide-image-fast');
@@ -137,12 +137,12 @@ nameText.addEventListener('mouseover', () => {
         spacer4r.classList.add('reveal-image-fast');
 
 
-        type(homeInfo4, homeInfo4, homeInfoText4, emptyText, 20)
-    }, 2800);
+        type(homeInfo4, homeInfo4, homeInfoText4, emptyText, 50)
+    }, 2200);
     setTimeout(() => {
         runningName = false;
         waitingName = true;
-    }, 4000);
+    }, 3000);
     setTimeout(() => {
         if (fadedName) {
             waitingName = false;
@@ -152,7 +152,7 @@ nameText.addEventListener('mouseover', () => {
             fadeHomeInfoName();
         }
         waitingName = false;
-    }, 8000);
+    }, 4000);
 });
 
 function fadeHomeInfoName() {
@@ -346,7 +346,7 @@ locationText.addEventListener('mouseover', () => {
             fadeHomeInfoLocation();
         }
         waitingLocation = false;
-    }, 2000);
+    }, 4000);
 });
 
 
@@ -493,7 +493,7 @@ workText.addEventListener('mouseover', () => {
             fadeHomeInfoWork();
         }
         waitingWork = false;
-    }, 3400);
+    }, 4000);
 });
 
 function fadeHomeInfoWork() {
