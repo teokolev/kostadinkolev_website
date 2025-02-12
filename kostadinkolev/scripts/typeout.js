@@ -68,10 +68,10 @@ const homeInfo2 = document.getElementById('name-line-2');
 const homeInfo3 = document.getElementById('name-line-3');
 const homeInfo4 = document.getElementById('name-line-4');
 
-const homeInfoText1 = "Commercials";
-const homeInfoText2 = "Documentaries";
-const homeInfoText3 = "Music Videos";
-const homeInfoText4 = "TVC's";
+const homeInfoText1 = "Commercial";
+const homeInfoText2 = "Documentary";
+const homeInfoText3 = "Music Video";
+const homeInfoText4 = "TVC";
 
 var runningName = false;
 var hoveringName = false;
