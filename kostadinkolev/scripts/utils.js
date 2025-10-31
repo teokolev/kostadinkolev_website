@@ -23,6 +23,18 @@ function enableScroll() {
          window.onscroll = function() { onScrollReveal() };
 }
 
+function disableHover() {
+        for (var k=0;k<allTexts.length;k++) {
+                allTexts[k].classList.add('disable-hover');
+        };
+}
+
+function enableHover() {
+        for (var k=0;k<allTexts.length;k++) {
+                allTexts[k].classList.remove('disable-hover');
+        };
+}
+
 var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
         document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight) - 1102;
 
@@ -55,8 +67,8 @@ function onScrollReveal() {
         
         if (checkVisibleDesktop(contactContainer)) {
                 initLogoTEST();
-                // initLogo();
                 gifActive = true;
+                disableHover();
                 if (firstReveal) {
                         logo.classList.remove('hide-image');
                         logo.classList.remove('hide-image-fast');
@@ -78,7 +90,6 @@ function onScrollReveal() {
 
                                         var contactLogoPosition = logo.getBoundingClientRect();
                                         logo.style.position = 'static';
-                                        console.log(window.innerWidth);
                                         if (window.innerWidth > 1600) {
                                                 contactContainer.style.marginLeft = 252 + "px";
                                         } else {
@@ -97,9 +108,7 @@ function onScrollReveal() {
                         logo.classList.remove('hide-no-shrink');
                         logo.classList.add('no-shrink');
                 }
-                
-                // fullscreenGif.classList.remove('hide-no-shrink');
-                // fullscreenGif.classList.add('reveal-no-shrink');
+
                 
                 
 
@@ -107,7 +116,7 @@ function onScrollReveal() {
                 contactContainer.classList.add('reveal-image-fast');
         } 
         if ((!checkVisibleDesktop(contactContainer)) && gifActive) {
-
+                enableHover();
                 if (firstHide) {
                         logo.classList.remove('hide-image');
                         logo.classList.remove('shrink');

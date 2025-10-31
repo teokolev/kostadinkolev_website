@@ -1,3 +1,24 @@
+let mappedTitles = allProjects.map(a => {
+        return `<div>
+                        <div id="${a.projectName}-desktop">${a.typeoutName}</div>
+                        <div class="project-info" id="${a.projectNickname}-info">
+                                <div class="test-box-project">
+                                        <span id="spacer-1f-${a.projectNickname}"></span>
+                                        <div id="${a.projectNickname}-1"></div>
+                                        <span id="spacer-1r-${a.projectNickname}"></span>
+                                </div>
+                                <div class="test-box-project" id="line-2">
+                                        <span id="spacer-2f-${a.projectNickname}"></span>
+                                        <div id="${a.projectNickname}-2"></div>
+                                        <span id="spacer-2r-${a.projectNickname}"></span>
+                                </div>
+                        </div>
+                </div>`
+});
+
+let titleBox = document.querySelector("#titles");
+titleBox.innerHTML+=mappedTitles.join("");
+
 var fullscreenGif = document.getElementById('fullscreen-gif');
 var vimeoPlayer = document.getElementById('vimeo-player');
 var titles = document.getElementById('titles');
@@ -10,27 +31,16 @@ var projectType = document.getElementById('project-type');
 var projectYear = document.getElementById('project-year');
 var homeGif = document.getElementById('home-container');
 
-
-var contraluzText = document.getElementById('contraluz-desktop');
-var adidasText = document.getElementById('adidas-desktop');
-var futurelandText = document.getElementById('futureland-desktop');
-var boseText = document.getElementById('bose-desktop');
-var ccText = document.getElementById('cc-desktop');
-var marcText = document.getElementById('marc-desktop');
-var urbanText = document.getElementById('urban-desktop');
-var polestarText = document.getElementById('polestar-desktop');
-var bambiiText = document.getElementById('bambii-desktop');
-var beattyText = document.getElementById('beatty-desktop');
-var yslText = document.getElementById('ysl-desktop');
-var bulgariaText = document.getElementById('bulgaria-desktop');
-var bazaarText = document.getElementById('bazaar-desktop');
-var reelText = document.getElementById('reel-desktop');
-
 var contactContainer = document.getElementById('contact-container');
 var contactGif = document.getElementById('contact-gif');
 var homeInfo = document.getElementById('home');
 
-allWorks = [contraluzText, adidasText, futurelandText, boseText, ccText, marcText, urbanText, polestarText, bambiiText, beattyText, yslText, bulgariaText, bazaarText, reelText]
+var allTexts = [];
+for (var k=0;k<allProjects.length;k++) {
+        var currTextDiv = document.getElementById(`${allProjects[k].projectName}-desktop`);
+        allTexts.push(currTextDiv);
+}
+
 
 // -----------------HOME GIF + LOGO GIF------------------------//
 
@@ -99,7 +109,7 @@ function showVimeo() {
         setTimeout(() => {
                 videoActive = true;
                 vimeoPlayer.style.zIndex = '999';
-        }, 2000);
+        }, 0);
         
         player.ready().then(function() {
                 
@@ -137,276 +147,38 @@ function hideVimeo() {
         videoActive = false;
 }
 
-// ------------------------------------------------------------------------------------------ //
-
-contraluzText.addEventListener('click', contraluzVideo, false);
-
-var workVideo = document.getElementById("work-video");
-
-function initContraluz() {
-        workVideo.src = "assets/MP4/CONTRALUZ.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
-
-function showBigGifContraluz() {
-        initContraluz();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-        }
-        
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
-
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 0) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
-
-function hideBigGifContraluz() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
-
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 0) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-function contraluzVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/925424364?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-        // projectTitle.innerHTML = 'CONTRALUZ X MALUMA';
-        // projectType.innerHTML = 'FOOD & BEVERAGE';
-        // projectYear.innerHTML = '2023';
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
-}
-
-contraluzText.addEventListener('mouseenter', showBigGifContraluz, false);
-contraluzText.addEventListener('mouseleave', hideBigGifContraluz, false);
-
-
-// ------------------------------------------------------------------------------------------ //
-
-function initAdidas() {
-        workVideo.src = "assets/MP4/ADIDAS.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
-
-function showBigGifAdidas() {
-        initAdidas();
-        // fullscreenGif.style.background = 'url(assets/NOSCHT_WEBSITE_GIFS_ADIDAS.gif)';
-        // fullscreenGif.style.backgroundSize = 'cover';
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
-        
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
-
-        
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 1) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
-
-function hideBigGifAdidas() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 1) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-adidasText.addEventListener('mouseenter', showBigGifAdidas, false);
-adidasText.addEventListener('mouseleave', hideBigGifAdidas, false);
-
-adidasText.addEventListener('click', adidasVideo, false);
-
-function adidasVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/1013677740?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'ADIDAS X TRAE YOUNG';
-        // projectType.innerHTML = 'CAMPAIGN';
-        // projectYear.innerHTML = '2024';
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
-}
-
-// ------------------------------------------------------------------------------------------ //
-
-function initFutureland() {
-        workVideo.src = "assets/MP4/FUTURELAND.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
-
-function showBigGifFutureland() {
-        initFutureland();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
-        
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 2) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
-
-function hideBigGifFutureland() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 2) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-futurelandText.addEventListener('mouseenter', showBigGifFutureland, false);
-futurelandText.addEventListener('mouseleave', hideBigGifFutureland, false);
-
-futurelandText.addEventListener('click', futurelandVideo, false);
-
-function futurelandVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/786053616?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'FUTURELAND';
-        // projectType.innerHTML = 'CREATIVE ADVERTISEMENT';
-        // projectYear.innerHTML = '2022';
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
-}
-
-// ------------------------------------------------------------------------------------------ //
-
-function initBose() {
-        workVideo.src = "assets/MP4/BOSE.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
-
-function showBigGifBose() {
-        initBose();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
-        
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 3) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
-
-function hideBigGifBose() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 3) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-boseText.addEventListener('mouseenter', showBigGifBose, false);
-boseText.addEventListener('mouseleave', hideBigGifBose, false);
-
-boseText.addEventListener('click', boseVideo, false);
-
-function boseVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/925403898?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'BOSE X COCO GAUFF';
-        // projectType.innerHTML = 'CAMPAIGN';
-        // projectYear.innerHTML = '2024';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
-        
-}
-
 function hideTitles() {
         titles.classList.remove('reveal-image');
         titles.classList.add('hide-image');
         titles.style.zIndex = '-999999';
-        titles.style.pointerEvents = 'none';
+        titles.style.pointerEvents = 'none';   
 }
 
-// ------------------------------------------------------------------------------------------ //
+var workVideo = document.getElementById("work-video");
 
-function initCC() {
-        workVideo.src = "assets/MP4/CC.mp4";
+function blurOtherProjects(index) {
+        console.log(index);
+        for (var i=0; i < allTexts.length; i++) {
+                if (i == index) {
+                        continue;
+                }
+                allTexts[i].classList.remove('unblur');
+                allTexts[i].classList.add('blur');
+        }
+};
+
+function unblurOtherProjects(index) {
+        for (var i=0; i < allTexts.length; i++) {
+                if (i == index) {
+                        continue;
+                }
+                allTexts[i].classList.remove('blur');
+                allTexts[i].classList.add('unblur');
+        }
+};
+
+function initProject(index) {
+        workVideo.src = allProjects[index].projectPath;
         workVideo.play();
         workVideo.addEventListener('timeupdate', funcloop=function(){
                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
@@ -414,628 +186,972 @@ function initCC() {
                         workVideo.play();
                 }
         }, false);
-};
-
-function showBigGifCC() {
-        initCC();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
-        
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 4) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
-
-function hideBigGifCC() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 4) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-ccText.addEventListener('mouseenter', showBigGifCC, false);
-ccText.addEventListener('mouseleave', hideBigGifCC, false);
-
-ccText.addEventListener('click', ccVideo, false);
-
-function ccVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/954469056?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'CALIFORNIA CLOSETS 2024';
-        // projectType.innerHTML = 'COMMERCIAL';
-        // projectYear.innerHTML = '2024';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
-        
 }
 
 // ------------------------------------------------------------------------------------------ //
+function addClick(index) {
+        allTexts[index].addEventListener('click', () => {
+                vimeoIframe.src = allProjects[index].vimeoPath;
+                hideTitles();
+                setTimeout(() => {
+                        showVimeo();
+                }, 500);
+        }, false);
+}
 
-function initMarc() {
-        workVideo.src = "assets/MP4/MARC JACOBS.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
+function addHover(index) {
+        allTexts[index].addEventListener('mouseenter', () => {
+                initProject(index);
+                if (fullscreenGif.classList.contains('hide-image-fast')){
+                        fullscreenGif.classList.remove('hide-image-fast');
+                        fullscreenGif.classList.add('reveal-image');
                 }
+                
+                fullscreenGif.classList.remove('hide-image');
+                fullscreenGif.classList.add('reveal-image');
+                blurOtherProjects(index);
         }, false);
 };
 
-function showBigGifmarc() {
-        initMarc();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+function addLeaveHover(index) {
+        allTexts[index].addEventListener('mouseleave', () => {
+                fullscreenGif.classList.remove('reveal-image');
+                fullscreenGif.classList.add('hide-image');
+                unblurOtherProjects(index);
+                
+        }, false);
+}
+
+function addEventListeners() {
+        for (var j=0;j<allProjects.length;j++) {
+                addClick(j)
+                addHover(j);
+                addLeaveHover(j);
+                addTypeOutHover(j);
+        };
+};
+
+
+
+
+
+// function removeHover(index) {
+//         allTexts[index].removeEventListener('mouseenter', () => {}, false);
+// }
+
+// function removeLeaveHover(index) {
+//         allTexts[index].removeEventListener('mouseleave', () => {}, false);
+// }
+
+// function removeEventListeners() {
+//         for (var j=0;j<allProjects.length;j++) {
+//                 // addClick(j)
+//                 removeHover(j);
+//                 removeLeaveHover(j);
+//                 // addTypeOutHover(j);
+//         };
+// }
+
+
+
+window.addEventListener("load", addEventListeners, false);
+
+
+
+
+
+// contraluzText.addEventListener('click', contraluzVideo, false);
+
+
+
+// function initContraluz() {
+//         workVideo.src = "assets/MP4/CONTRALUZ.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
+
+// function showBigGifContraluz() {
+//         initContraluz();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//         }
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 5) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
 
-function hideBigGifmarc() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 0) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 5) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
+// function hideBigGifContraluz() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-marcText.addEventListener('mouseenter', showBigGifmarc, false);
-marcText.addEventListener('mouseleave', hideBigGifmarc, false);
 
-marcText.addEventListener('click', marcVideo, false);
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 0) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
 
-function marcVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/1013672752?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'MARC JACOBS';
-        // projectType.innerHTML = 'FASHION + LUXURY';
-        // projectYear.innerHTML = '2023';
+// function contraluzVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/925424364?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+//         // projectTitle.innerHTML = 'CONTRALUZ X MALUMA';
+//         // projectType.innerHTML = 'FOOD & BEVERAGE';
+//         // projectYear.innerHTML = '2023';
+//         hideTitles();
 
-        hideTitles();
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+// }
 
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
-        
-}
+// contraluzText.addEventListener('mouseenter', showBigGifContraluz, false);
+// contraluzText.addEventListener('mouseleave', hideBigGifContraluz, false);
+
 
 // ------------------------------------------------------------------------------------------ //
 
-function initUrban() {
-        workVideo.src = "assets/MP4/UD.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function initAdidas() {
+//         workVideo.src = "assets/MP4/ADIDAS.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-function showBigGifurban() {
-        initUrban();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+// function showBigGifAdidas() {
+//         initAdidas();
+//         // fullscreenGif.style.background = 'url(assets/NOSCHT_WEBSITE_GIFS_ADIDAS.gif)';
+//         // fullscreenGif.style.backgroundSize = 'cover';
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 6) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
-
-function hideBigGifurban() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
-
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 6) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-urbanText.addEventListener('mouseenter', showBigGifurban, false);
-urbanText.addEventListener('mouseleave', hideBigGifurban, false);
-
-urbanText.addEventListener('click', urbanVideo, false);
-
-function urbanVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/1012646241?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'URBAN DECAY MONDIALE';
-        // projectType.innerHTML = 'BEAUTY';
-        // projectYear.innerHTML = '2024';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
         
-}
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 1) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
+
+// function hideBigGifAdidas() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 1) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// adidasText.addEventListener('mouseenter', showBigGifAdidas, false);
+// adidasText.addEventListener('mouseleave', hideBigGifAdidas, false);
+
+// adidasText.addEventListener('click', adidasVideo, false);
+
+// function adidasVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/1013677740?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'ADIDAS X TRAE YOUNG';
+//         // projectType.innerHTML = 'CAMPAIGN';
+//         // projectYear.innerHTML = '2024';
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+// }
 
 // ------------------------------------------------------------------------------------------ //
 
-function initPolestar() {
-        workVideo.src = "assets/MP4/POLESTAR.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function initFutureland() {
+//         workVideo.src = "assets/MP4/FUTURELAND.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-function showBigGifpolestar() {
-        initPolestar();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+// function showBigGifFutureland() {
+//         initFutureland();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 7) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 2) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function hideBigGifpolestar() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+// function hideBigGifFutureland() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 7) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 2) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
 
-polestarText.addEventListener('mouseenter', showBigGifpolestar, false);
-polestarText.addEventListener('mouseleave', hideBigGifpolestar, false);
+// futurelandText.addEventListener('mouseenter', showBigGifFutureland, false);
+// futurelandText.addEventListener('mouseleave', hideBigGifFutureland, false);
 
-polestarText.addEventListener('click', polestarVideo, false);
+// futurelandText.addEventListener('click', futurelandVideo, false);
 
-function polestarVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/1013672453?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'POLESTAR 3 NYC LAUNCH';
-        // projectType.innerHTML = 'EVENT CAPTURE';
-        // projectYear.innerHTML = '2024';
+// function futurelandVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/786053616?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'FUTURELAND';
+//         // projectType.innerHTML = 'CREATIVE ADVERTISEMENT';
+//         // projectYear.innerHTML = '2022';
+//         hideTitles();
 
-        hideTitles();
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+// }
 
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
+// // ------------------------------------------------------------------------------------------ //
+
+// function initBose() {
+//         workVideo.src = "assets/MP4/BOSE.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
+
+// function showBigGifBose() {
+//         initBose();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-}
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-// ------------------------------------------------------------------------------------------ //
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 3) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function initBambii() {
-        workVideo.src = "assets/MP4/BAMBII.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function hideBigGifBose() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function showBigGifbambii() {
-        initBambii();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 3) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// boseText.addEventListener('mouseenter', showBigGifBose, false);
+// boseText.addEventListener('mouseleave', hideBigGifBose, false);
+
+// boseText.addEventListener('click', boseVideo, false);
+
+// function boseVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/925403898?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'BOSE X COCO GAUFF';
+//         // projectType.innerHTML = 'CAMPAIGN';
+//         // projectYear.innerHTML = '2024';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 8) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
 
-function hideBigGifbambii() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 8) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
+// // ------------------------------------------------------------------------------------------ //
 
-bambiiText.addEventListener('mouseenter', showBigGifbambii, false);
-bambiiText.addEventListener('mouseleave', hideBigGifbambii, false);
+// function initCC() {
+//         workVideo.src = "assets/MP4/CC.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-bambiiText.addEventListener('click', bambiiVideo, false);
-
-function bambiiVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/357900879?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'BAMBI "NITEVISION"';
-        // projectType.innerHTML = 'MUSIC VIDEO';
-        // projectYear.innerHTML = '2019';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
+// function showBigGifCC() {
+//         initCC();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-}
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-// ------------------------------------------------------------------------------------------ //
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 4) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function initBeatty() {
-        workVideo.src = "assets/MP4/PARTYS OVER.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function hideBigGifCC() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function showBigGifbeatty() {
-        initBeatty();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 4) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// ccText.addEventListener('mouseenter', showBigGifCC, false);
+// ccText.addEventListener('mouseleave', hideBigGifCC, false);
+
+// ccText.addEventListener('click', ccVideo, false);
+
+// function ccVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/954469056?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'CALIFORNIA CLOSETS 2024';
+//         // projectType.innerHTML = 'COMMERCIAL';
+//         // projectYear.innerHTML = '2024';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 9) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
+// // ------------------------------------------------------------------------------------------ //
 
-function hideBigGifbeatty() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+// function initMarc() {
+//         workVideo.src = "assets/MP4/MARC JACOBS.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 9) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-beattyText.addEventListener('mouseenter', showBigGifbeatty, false);
-beattyText.addEventListener('mouseleave', hideBigGifbeatty, false);
-
-beattyText.addEventListener('click', beattyVideo, false);
-
-function beattyVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/288258977?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'RYAN BEATTY "PARTY\'S OVER"';
-        // projectType.innerHTML = 'MUSIC VIDEO';
-        // projectYear.innerHTML = '2018';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
+// function showBigGifmarc() {
+//         initMarc();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-}
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-// ------------------------------------------------------------------------------------------ //
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 5) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function initYSL() {
-        workVideo.src = "assets/MP4/LNX REBEL.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function hideBigGifmarc() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function showBigGifysl() {
-        initYSL();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 5) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// marcText.addEventListener('mouseenter', showBigGifmarc, false);
+// marcText.addEventListener('mouseleave', hideBigGifmarc, false);
+
+// marcText.addEventListener('click', marcVideo, false);
+
+// function marcVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/1013672752?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'MARC JACOBS';
+//         // projectType.innerHTML = 'FASHION + LUXURY';
+//         // projectYear.innerHTML = '2023';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 10) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
+// // ------------------------------------------------------------------------------------------ //
 
-function hideBigGifysl() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+// function initUrban() {
+//         workVideo.src = "assets/MP4/UD.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 10) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-yslText.addEventListener('mouseenter', showBigGifysl, false);
-yslText.addEventListener('mouseleave', hideBigGifysl, false);
-
-yslText.addEventListener('click', yslVideo, false);
-
-function yslVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/1012646511?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = 'YSL LNX REBEL';
-        // projectType.innerHTML = 'FASHION + LUXURY';
-        // projectYear.innerHTML = '2024';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
+// function showBigGifurban() {
+//         initUrban();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-}
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-// ------------------------------------------------------------------------------------------ //
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 6) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function initBulgaria() {
-        workVideo.src = "assets/MP4/CHILDS HOME.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function hideBigGifurban() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function showBigGifbulgaria() {
-        initBulgaria();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 6) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// urbanText.addEventListener('mouseenter', showBigGifurban, false);
+// urbanText.addEventListener('mouseleave', hideBigGifurban, false);
+
+// urbanText.addEventListener('click', urbanVideo, false);
+
+// function urbanVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/1012646241?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'URBAN DECAY MONDIALE';
+//         // projectType.innerHTML = 'BEAUTY';
+//         // projectYear.innerHTML = '2024';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 11) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
+// // ------------------------------------------------------------------------------------------ //
 
-function hideBigGifbulgaria() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+// function initPolestar() {
+//         workVideo.src = "assets/MP4/POLESTAR.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 11) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-bulgariaText.addEventListener('mouseenter', showBigGifbulgaria, false);
-bulgariaText.addEventListener('mouseleave', hideBigGifbulgaria, false);
-
-bulgariaText.addEventListener('click', bulgariaVideo, false);
-
-function bulgariaVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/938691368?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = "A CHILD'S HOME (TRAILER)";
-        // projectType.innerHTML = 'DOCUMENTARY';
-        // projectYear.innerHTML = '2024';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
+// function showBigGifpolestar() {
+//         initPolestar();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-}
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-// ------------------------------------------------------------------------------------------ //
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 7) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function initBazarr() {
-        workVideo.src = "assets/MP4/BAZAAR.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function hideBigGifpolestar() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function showBigGifbazaar() {
-        initBazarr();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 7) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// polestarText.addEventListener('mouseenter', showBigGifpolestar, false);
+// polestarText.addEventListener('mouseleave', hideBigGifpolestar, false);
+
+// polestarText.addEventListener('click', polestarVideo, false);
+
+// function polestarVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/1013672453?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'POLESTAR 3 NYC LAUNCH';
+//         // projectType.innerHTML = 'EVENT CAPTURE';
+//         // projectYear.innerHTML = '2024';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 12) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
+// // ------------------------------------------------------------------------------------------ //
 
-function hideBigGifbazaar() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+// function initBambii() {
+//         workVideo.src = "assets/MP4/BAMBII.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 12) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
-
-bazaarText.addEventListener('mouseenter', showBigGifbazaar, false);
-bazaarText.addEventListener('mouseleave', hideBigGifbazaar, false);
-
-bazaarText.addEventListener('click', bazaarVideo, false);
-
-function bazaarVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/423321791?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // projectTitle.innerHTML = "BAZAAR";
-        // projectType.innerHTML = 'EXPERIMENTAL';
-        // projectYear.innerHTML = '2019';
-
-        hideTitles();
-
-        setTimeout(() => {
-                showVimeo();
-        }, 500);
+// function showBigGifbambii() {
+//         initBambii();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
         
-}
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-// ------------------------------------------------------------------------------------------ //
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 8) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-function initReel() {
-        workVideo.src = "assets/MP4/REEL.mp4";
-        workVideo.play();
-        workVideo.addEventListener('timeupdate', funcloop=function(){
-                if (workVideo.currentTime > (workVideo.duration - 0.01)) {
-                        workVideo.currentTime = 0.01;
-                        workVideo.play();
-                }
-        }, false);
-};
+// function hideBigGifbambii() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function showBigGifreel() {
-        initReel();
-        if (fullscreenGif.classList.contains('hide-image-fast')){
-                fullscreenGif.classList.remove('hide-image-fast');
-                fullscreenGif.classList.add('reveal-image');
-            }
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 8) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// bambiiText.addEventListener('mouseenter', showBigGifbambii, false);
+// bambiiText.addEventListener('mouseleave', hideBigGifbambii, false);
+
+// bambiiText.addEventListener('click', bambiiVideo, false);
+
+// function bambiiVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/357900879?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'BAMBI "NITEVISION"';
+//         // projectType.innerHTML = 'MUSIC VIDEO';
+//         // projectYear.innerHTML = '2019';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
         
-        fullscreenGif.classList.remove('hide-image');
-        fullscreenGif.classList.add('reveal-image');
+// }
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 13) {
-                        continue;
-                }
-                allWorks[i].classList.remove('unblur');
-                allWorks[i].classList.add('blur');
-        }
-}
+// // ------------------------------------------------------------------------------------------ //
 
-function hideBigGifreel() {
-        fullscreenGif.classList.remove('reveal-image');
-        fullscreenGif.classList.add('hide-image');
+// function initBeatty() {
+//         workVideo.src = "assets/MP4/PARTYS OVER.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
 
-        for (var i=0; i < allWorks.length; i++) {
-                if (i == 13) {
-                        continue;
-                }
-                allWorks[i].classList.remove('blur');
-                allWorks[i].classList.add('unblur');
-        }
-}
+// function showBigGifbeatty() {
+//         initBeatty();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
+        
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
 
-reelText.addEventListener('mouseenter', showBigGifreel, false);
-reelText.addEventListener('mouseleave', hideBigGifreel, false);
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 9) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
 
-reelText.addEventListener('click', reelVideo, false);
+// function hideBigGifbeatty() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
 
-function reelVideo() {
-        vimeoIframe.src = "https://player.vimeo.com/video/914863354?h=2af003c63c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-        // 
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 9) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
 
-        hideTitles();
+// beattyText.addEventListener('mouseenter', showBigGifbeatty, false);
+// beattyText.addEventListener('mouseleave', hideBigGifbeatty, false);
 
-        setTimeout(() => {
-                showVimeo();
-        }, 500);    
-}
+// beattyText.addEventListener('click', beattyVideo, false);
+
+// function beattyVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/288258977?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'RYAN BEATTY "PARTY\'S OVER"';
+//         // projectType.innerHTML = 'MUSIC VIDEO';
+//         // projectYear.innerHTML = '2018';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+        
+// }
+
+// // ------------------------------------------------------------------------------------------ //
+
+// function initYSL() {
+//         workVideo.src = "assets/MP4/LNX REBEL.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
+
+// function showBigGifysl() {
+//         initYSL();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
+        
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 10) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
+
+// function hideBigGifysl() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 10) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// yslText.addEventListener('mouseenter', showBigGifysl, false);
+// yslText.addEventListener('mouseleave', hideBigGifysl, false);
+
+// yslText.addEventListener('click', yslVideo, false);
+
+// function yslVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/1012646511?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = 'YSL LNX REBEL';
+//         // projectType.innerHTML = 'FASHION + LUXURY';
+//         // projectYear.innerHTML = '2024';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+        
+// }
+
+// // ------------------------------------------------------------------------------------------ //
+
+// function initBulgaria() {
+//         workVideo.src = "assets/MP4/CHILDS HOME.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
+
+// function showBigGifbulgaria() {
+//         initBulgaria();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
+        
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 11) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
+
+// function hideBigGifbulgaria() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 11) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// bulgariaText.addEventListener('mouseenter', showBigGifbulgaria, false);
+// bulgariaText.addEventListener('mouseleave', hideBigGifbulgaria, false);
+
+// bulgariaText.addEventListener('click', bulgariaVideo, false);
+
+// function bulgariaVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/938691368?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = "A CHILD'S HOME (TRAILER)";
+//         // projectType.innerHTML = 'DOCUMENTARY';
+//         // projectYear.innerHTML = '2024';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+        
+// }
+
+// // ------------------------------------------------------------------------------------------ //
+
+// function initBazarr() {
+//         workVideo.src = "assets/MP4/BAZAAR.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
+
+// function showBigGifbazaar() {
+//         initBazarr();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
+        
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 12) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
+
+// function hideBigGifbazaar() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 12) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// bazaarText.addEventListener('mouseenter', showBigGifbazaar, false);
+// bazaarText.addEventListener('mouseleave', hideBigGifbazaar, false);
+
+// bazaarText.addEventListener('click', bazaarVideo, false);
+
+// function bazaarVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/423321791?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // projectTitle.innerHTML = "BAZAAR";
+//         // projectType.innerHTML = 'EXPERIMENTAL';
+//         // projectYear.innerHTML = '2019';
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);
+        
+// }
+
+// // ------------------------------------------------------------------------------------------ //
+
+// function initReel() {
+//         workVideo.src = "assets/MP4/REEL.mp4";
+//         workVideo.play();
+//         workVideo.addEventListener('timeupdate', funcloop=function(){
+//                 if (workVideo.currentTime > (workVideo.duration - 0.01)) {
+//                         workVideo.currentTime = 0.01;
+//                         workVideo.play();
+//                 }
+//         }, false);
+// };
+
+// function showBigGifreel() {
+//         initReel();
+//         if (fullscreenGif.classList.contains('hide-image-fast')){
+//                 fullscreenGif.classList.remove('hide-image-fast');
+//                 fullscreenGif.classList.add('reveal-image');
+//             }
+        
+//         fullscreenGif.classList.remove('hide-image');
+//         fullscreenGif.classList.add('reveal-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 13) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('unblur');
+//                 allWorks[i].classList.add('blur');
+//         }
+// }
+
+// function hideBigGifreel() {
+//         fullscreenGif.classList.remove('reveal-image');
+//         fullscreenGif.classList.add('hide-image');
+
+//         for (var i=0; i < allWorks.length; i++) {
+//                 if (i == 13) {
+//                         continue;
+//                 }
+//                 allWorks[i].classList.remove('blur');
+//                 allWorks[i].classList.add('unblur');
+//         }
+// }
+
+// reelText.addEventListener('mouseenter', showBigGifreel, false);
+// reelText.addEventListener('mouseleave', hideBigGifreel, false);
+
+// reelText.addEventListener('click', reelVideo, false);
+
+// function reelVideo() {
+//         vimeoIframe.src = "https://player.vimeo.com/video/914863354?h=2af003c63c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+//         // 
+
+//         hideTitles();
+
+//         setTimeout(() => {
+//                 showVimeo();
+//         }, 500);    
+// }

@@ -4,7 +4,7 @@ const title3 = document.getElementById('title-3');
 
 const title1text = "KOSTADIN\xa0KOLEV";
 const title2text = "NYC";
-const title3text = "EDITOR/COLORIST";
+const title3text = "COLORIST";
 
 const emptyText = "";
 
@@ -77,7 +77,6 @@ var runningName = false;
 var hoveringName = false;
 var waitingName = false;
 var fadedName = true;
-
 
 nameText.addEventListener('mouseover', () => {
     hoveringName = true;
@@ -408,7 +407,7 @@ const workInfo3 = document.getElementById('work-line-3');
 const workInfo4 = document.getElementById('work-line-4');
 
 const workInfoText2 = "Animation";
-const workInfoText1 = "Color";
+const workInfoText1 = "Edit";
 const workInfoText3 = "Sound Design & Mixing";
 const workInfoText4 = "Graphic Design";
 
@@ -430,30 +429,31 @@ workText.addEventListener('mouseover', () => {
 
     workInfoContainer.classList.remove('hide-image-fast');
     workInfoContainer.classList.add('reveal-image-fast');
-    // workInfo1.classList.remove('hide-image-fast');
-    // workInfo1.classList.add('reveal-image-fast');
+    workInfo1.classList.remove('hide-image-fast');
+    workInfo1.classList.add('reveal-image-fast');
 
-    // spacer1fwork.classList.remove('hide-image-fast');
-    // spacer1fwork.classList.add('reveal-image-fast');
-    // spacer1rwork.classList.remove('hide-image-fast');
-    // spacer1rwork.classList.add('reveal-image-fast');
+    spacer1fwork.classList.remove('hide-image-fast');
+    spacer1fwork.classList.add('reveal-image-fast');
+    spacer1rwork.classList.remove('hide-image-fast');
+    spacer1rwork.classList.add('reveal-image-fast');
 
-    // type(workInfo1, workInfo1, workInfoText1, emptyText, 40);
-    workInfo2.classList.remove('hide-image-fast');
-    workInfo2.classList.add('reveal-image-fast');
+    type(workInfo1, workInfo1, workInfoText1, emptyText, 60);
+    
 
-    spacer2fwork.classList.remove('hide-image-fast');
-    spacer2fwork.classList.add('reveal-image-fast');
-    spacer2rwork.classList.remove('hide-image-fast');
-    spacer2rwork.classList.add('reveal-image-fast');
+    setTimeout(() => {
+        workInfo2.classList.remove('hide-image-fast');
+        workInfo2.classList.add('reveal-image-fast');
+
+        spacer2fwork.classList.remove('hide-image-fast');
+        spacer2fwork.classList.add('reveal-image-fast');
+        spacer2rwork.classList.remove('hide-image-fast');
+        spacer2rwork.classList.add('reveal-image-fast');
+        type(workInfo2, workInfo2, workInfoText2, emptyText, 40)
+    }, 400);
+    
 
 
-    type(workInfo2, workInfo2, workInfoText2, emptyText, 40)
-
-
-    // setTimeout(() => {
-        
-    // }, 600);
+    
 
     setTimeout(() => {
         workInfo3.classList.remove('hide-image-fast');
@@ -466,7 +466,7 @@ workText.addEventListener('mouseover', () => {
 
 
         type(workInfo3, workInfo3, workInfoText3, emptyText, 30)
-    }, 600);
+    }, 1000);
 
     setTimeout(() => {
         workInfo4.classList.remove('hide-image-fast');
@@ -479,11 +479,11 @@ workText.addEventListener('mouseover', () => {
 
 
         type(workInfo4, workInfo4, workInfoText4, emptyText, 30)
-    }, 1200);
+    }, 1800);
     setTimeout(() => {
         runningWork = false;
         waitingWork = true;
-    }, 1900);
+    }, 2000);
     setTimeout(() => {
         if (fadedWork) {
             waitingWork = false;
@@ -493,16 +493,16 @@ workText.addEventListener('mouseover', () => {
             fadeHomeInfoWork();
         }
         waitingWork = false;
-    }, 4000);
+    }, 4200);
 });
 
 function fadeHomeInfoWork() {
     workInfoContainer.classList.remove('reveal-image-fast');
     workInfoContainer.classList.add('hide-image-fast');
-    // spacer1fwork.classList.remove('reveal-image-fast');
-    // spacer1fwork.classList.add('hide-image-fast');
-    // spacer1rwork.classList.remove('reveal-image-fast');
-    // spacer1rwork.classList.add('hide-image-fast');
+    spacer1fwork.classList.remove('reveal-image-fast');
+    spacer1fwork.classList.add('hide-image-fast');
+    spacer1rwork.classList.remove('reveal-image-fast');
+    spacer1rwork.classList.add('hide-image-fast');
 
     spacer2fwork.classList.remove('reveal-image-fast');
     spacer2fwork.classList.add('hide-image-fast');
@@ -519,8 +519,8 @@ function fadeHomeInfoWork() {
     spacer4rwork.classList.remove('reveal-image-fast');
     spacer4rwork.classList.add('hide-image-fast');
 
-    // workInfo1.classList.remove('reveal-image-fast');
-    // workInfo1.classList.add('hide-image-fast');
+    workInfo1.classList.remove('reveal-image-fast');
+    workInfo1.classList.add('hide-image-fast');
     workInfo2.classList.remove('reveal-image-fast');
     workInfo2.classList.add('hide-image-fast');
     workInfo3.classList.remove('reveal-image-fast');
@@ -529,7 +529,7 @@ function fadeHomeInfoWork() {
     workInfo4.classList.add('hide-image-fast');
 
     setTimeout(() => {
-        // workInfo1.innerText = "";
+        workInfo1.innerText = "";
         workInfo2.innerText = "";
         workInfo3.innerText = "";
         workInfo4.innerText = "";

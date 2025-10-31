@@ -290,6 +290,7 @@ span {
         margin: auto;
         top: 50vh;
         z-index: 999;
+        transition: 2s;
 }
 
 
