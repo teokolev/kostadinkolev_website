@@ -7,11 +7,14 @@ body {
 .vimeo-player-mobile {
         width: 100vw;
         height: 30vh;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        margin: auto;
+        /* position: absolute; */
+        /* position: absolute; */
         left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 999;
         /* border: solid 1px red; */
 }
 
@@ -20,3 +23,5 @@ iframe {
         height: 100%;
         /* border: solid 1px green; */
 }
+
+

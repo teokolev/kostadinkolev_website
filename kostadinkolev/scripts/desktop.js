@@ -201,6 +201,7 @@ function addClick(index) {
 
 function addHover(index) {
         allTexts[index].addEventListener('mouseenter', () => {
+                gifsRunning = true;
                 initProject(index);
                 if (fullscreenGif.classList.contains('hide-image-fast')){
                         fullscreenGif.classList.remove('hide-image-fast');
@@ -213,12 +214,17 @@ function addHover(index) {
         }, false);
 };
 
+var gifsRunning = false;
+
 function addLeaveHover(index) {
         allTexts[index].addEventListener('mouseleave', () => {
+                gifsRunning = true;
                 fullscreenGif.classList.remove('reveal-image');
                 fullscreenGif.classList.add('hide-image');
                 unblurOtherProjects(index);
-                
+                setTimeout(() => {
+                        gifsRunning = false;
+                }, 2000);
         }, false);
 }
 

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, maximum-scale=1.0">
         <title>KOSTADIN KOLEV</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.jpeg">
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/mobile_video.css">
         <link rel="stylesheet" href="https://use.typekit.net/jwi6xqn.css">
         <script src="https://player.vimeo.com/api/player.js"></script>
         <script src="scroll_packages/gsap.min.js"></script>
@@ -102,43 +103,27 @@
                 </div>
         </div>
         
-        <div class="mobile-container">
+        <div class="mobile-container" id="mobile-container">
+                <div class="titles-mobile" id="titles-mobile"></div>
 
-                <div class="titles-mobile">
-                        <div id="contraluz"><a href="contraluz.html">CONTRALUZ</a></div>
-                        <div id="adidas"><a href="adidas.html">ADIDAS X TRAE YOUNG</a></div>
-                        <div id="futureland"><a href="futureland.html">FUTURELAND</a></div>
-                        <div id="bose"><a href="bose.html">BOSE X COCO GAUFF</a></div>
-                        <div id="cc"><a href="cc.html">CALIFORNIA CLOSETS</a></div>
-                        <div id="marc"><a href="marc.html">MARC JACOBS SS23</a></div>
-                        <div id="urban"><a href="urban.html">URBAN DECAY MONDIALE</a></div>
-                        <div id="polestar"><a href="polestar.html">POLESTAR 3 NYC LAUNCH</a></div>
-                        <div id="bambii"><a href="bambii.html">BAMBII "NITEVISION"</a></div>
-                        <div id="beatty"><a href="beatty.html">RYAN BEATTY "PARTY'S OVER"</a></div>
-                        <div id="ysl"><a href="ysl.html">YSL LNX REBEL</a></div>
-                        <div id="bulgaria"><a href="childshome.html">A CHILD'S HOME (TRAILER)</a></div>
-                        <div id="bazaar"><a href="bazaar.html">BAZAAR</a></div>
-                        <div class="reel" id="reel"><a href="reel.html">*REEL</a></div>
-                </div>
                 
                 <div class="contact-container" id="contact-container-mobile">
                         <div class="fullscreen-gif" id="fullscreen-gif-mobile"></div>
-                        <div class="contact">
-                                <a href="mailto:kostadinkolev9595@gmail.com" target="_blank">
+                        <div class="contact" href="mailto:kostadinkolev9595@gmail.com">
+                                <a id="link-contact" href="mailto:kostadinkolev9595@gmail.com" target="_blank">
                                         <div class="test-box-project">
                                                 <span id="spacer-1f-email-m"></span>
                                                 <div id="email-m"></div>
                                                 <span id="spacer-1r-email-m"></span>
                                         </div>
                                 </a>
-                                <a href="tel:929-531-1487" target="_blank">
-                                        <div class="test-box-project">
-                                                <span id="spacer-2f-phone-m"></span>
-                                                <div id="phone-m"></div>
-                                                <span id="spacer-2r-phone-m"></span>
-                                        </div>
-                                </a>
                         </div>
+                </div>
+        </div>
+
+        <div id="modal-container">
+                <div class="modal-background">
+                  <div class="modal" id="modal_content"></div>
                 </div>
         </div>
 
@@ -151,20 +136,11 @@
                                 <video id="logo-video" muted preload="metadata" src="assets/MP4/LOGO.mp4" type="video/mp4"></video>
                         </div>
                         <div class="contact-container-desktop" id="contact-container">
-                                <a href="mailto:kostadinkolev9595@gmail.com" target="_blank">
-                                        <div class="test-box-project">
-                                                <span id="spacer-1f-email"></span>
-                                                <div id="email"></div>
-                                                <span id="spacer-1r-email"></span>
-                                        </div>
+                                <a class="test-box-project" id="test-box-project" href="mailto:kostadinkolev9595@gmail.com" target="_blank">
+                                        <span id="spacer-1f-email"></span>
+                                        <div id="email"></div>
+                                        <span id="spacer-1r-email"></span>
                                 </a>
-                                <!-- <a href="tel:929-531-1487" target="_blank">
-                                        <div class="test-box-project" id="line-2">
-                                                <span id="spacer-2f-phone"></span>
-                                                <div id="phone"></div>
-                                                <span id="spacer-2r-phone"></span>
-                                        </div>
-                                </a> -->
                         </div>
                 </div>
                 <div class="vimeo-player" id="vimeo-player">
@@ -174,222 +150,8 @@
                         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#f5f5f5" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#f5f5f5"></path> </g></svg>
                 </div>
 
-                <section class="panel red">
-                        <div class="titles" id="titles">
-                                <!-- <div>
-                                        <div id="contraluz-desktop">CONTRALUZ</div>
-                                        <div class="project-info" id="cz-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-cz"></span>
-                                                        <div id="CZ-1"></div>
-                                                        <span id="spacer-1r-cz"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-cz"></span>
-                                                        <div id="CZ-2"></div>
-                                                        <span id="spacer-2r-cz"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="adidas-desktop">ADIDAS X TRAE YOUNG</div>
-                                        <div class="project-info" id="ad-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-ad"></span>
-                                                        <div id="ad-1"></div>
-                                                        <span id="spacer-1r-ad"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-ad"></span>
-                                                        <div id="ad-2"></div>
-                                                        <span id="spacer-2r-ad"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="futureland-desktop">FUTURELAND</div>
-                                        <div class="project-info" id="FL-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-FL"></span>
-                                                        <div id="FL-1"></div>
-                                                        <span id="spacer-1r-FL"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-FL"></span>
-                                                        <div id="FL-2"></div>
-                                                        <span id="spacer-2r-FL"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="bose-desktop">BOSE X COCO GAUFF</div>
-                                        <div class="project-info" id="BOSE-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-BOSE"></span>
-                                                        <div id="BOSE-1"></div>
-                                                        <span id="spacer-1r-BOSE"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-BOSE"></span>
-                                                        <div id="BOSE-2"></div>
-                                                        <span id="spacer-2r-BOSE"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="cc-desktop">CALIFORNIA CLOSETS</div>
-                                        <div class="project-info" id="CC-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-CC"></span>
-                                                        <div id="CC-1"></div>
-                                                        <span id="spacer-1r-CC"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-CC"></span>
-                                                        <div id="CC-2"></div>
-                                                        <span id="spacer-2r-CC"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="marc-desktop">MARC JACOBS SS23</div>
-                                        <div class="project-info" id="MARC-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-MARC"></span>
-                                                        <div id="MARC-1"></div>
-                                                        <span id="spacer-1r-MARC"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-MARC"></span>
-                                                        <div id="MARC-2"></div>
-                                                        <span id="spacer-2r-MARC"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="urban-desktop">URBAN DECAY MONDIALE</div>
-                                        <div class="project-info" id="UD-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-UD"></span>
-                                                        <div id="UD-1"></div>
-                                                        <span id="spacer-1r-UD"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-UD"></span>
-                                                        <div id="UD-2"></div>
-                                                        <span id="spacer-2r-UD"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="polestar-desktop">POLESTAR 3 NYC LAUNCH</div>
-                                        <div class="project-info" id="POLE-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-POLE"></span>
-                                                        <div id="POLE-1"></div>
-                                                        <span id="spacer-1r-POLE"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-POLE"></span>
-                                                        <div id="POLE-2"></div>
-                                                        <span id="spacer-2r-POLE"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="bambii-desktop">BAMBII "NITEVISION"</div>
-                                        <div class="project-info" id="BAMBII-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-BAMBII"></span>
-                                                        <div id="BAMBII-1"></div>
-                                                        <span id="spacer-1r-BAMBII"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-BAMBII"></span>
-                                                        <div id="BAMBII-2"></div>
-                                                        <span id="spacer-2r-BAMBII"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="beatty-desktop">RYAN BEATTY "PARTY'S OVER"</div>
-                                        <div class="project-info" id="BEATTY-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-BEATTY"></span>
-                                                        <div id="BEATTY-1"></div>
-                                                        <span id="spacer-1r-BEATTY"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-BEATTY"></span>
-                                                        <div id="BEATTY-2"></div>
-                                                        <span id="spacer-2r-BEATTY"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="ysl-desktop">YSL LNX REBEL</div>
-                                        <div class="project-info" id="YSL-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-YSL"></span>
-                                                        <div id="YSL-1"></div>
-                                                        <span id="spacer-1r-YSL"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-YSL"></span>
-                                                        <div id="YSL-2"></div>
-                                                        <span id="spacer-2r-YSL"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="bulgaria-desktop">A CHILD'S HOME (TRAILER)</div>
-                                        <div class="project-info" id="BG-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-BG"></span>
-                                                        <div id="BG-1"></div>
-                                                        <span id="spacer-1r-BG"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-BG"></span>
-                                                        <div id="BG-2"></div>
-                                                        <span id="spacer-2r-BG"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div id="bazaar-desktop">BAZAAR</div>
-                                        <div class="project-info" id="BAZAAR-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-BAZAAR"></span>
-                                                        <div id="BAZAAR-1"></div>
-                                                        <span id="spacer-1r-BAZAAR"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-BAZAAR"></span>
-                                                        <div id="BAZAAR-2"></div>
-                                                        <span id="spacer-2r-BAZAAR"></span>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div>
-                                        <div class="reel" id="reel-desktop">*REEL</div>
-                                        <div class="project-info" id="REEL-info">
-                                                <div class="test-box-project">
-                                                        <span id="spacer-1f-REEL"></span>
-                                                        <div id="REEL-1"></div>
-                                                        <span id="spacer-1r-REEL"></span>
-                                                </div>
-                                                <div class="test-box-project" id="line-2">
-                                                        <span id="spacer-2f-REEL"></span>
-                                                        <div id="REEL-2"></div>
-                                                        <span id="spacer-2r-REEL"></span>
-                                                </div>
-                                        </div>
-                                </div> -->
-                                
-
-                                
-                                
+                <section class="panel red" id="panel">
+                        <div class="titles" id="titles"> 
                         </div>
                 </section>
         </div>

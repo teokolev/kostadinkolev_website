@@ -39,8 +39,6 @@ var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight,
         document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight) - 1102;
 
 
-// console.log(limit);
-
 var firstReveal = true;
 var firstHide = true;
 
@@ -50,6 +48,59 @@ var mobileActive = false;
 
 var logo = document.getElementById('logo');
 const contactBox = document.getElementById('contact-box');
+const panel = document.getElementById('panel');
+const testBoxProject = document.getElementById('test-box-project');
+
+function handleContact() {
+        initLogoTEST();
+        gifActive = true;
+        disableHover();
+        panel.classList.add('behind');
+        panel.classList.remove('infront');
+        testBoxProject.style.pointerEvents = 'all';
+        if (firstReveal) {
+                logo.classList.remove('hide-image');
+                logo.classList.remove('hide-image-fast');
+                logo.classList.add('reveal-image-fast');
+
+                setTimeout(() => {
+                        logo.classList.remove('reveal-image-fast');
+                        logo.style.opacity = '1';
+                }, 500);
+
+                setTimeout(() => {
+                        logo.classList.add('shrink');
+                        
+                        setTimeout(() => {
+                                if (!typed) {
+                                        contactTypeOut(); 
+                                }
+                                firstReveal = false;
+
+                                var contactLogoPosition = logo.getBoundingClientRect();
+                                logo.style.position = 'static';
+                                if (window.innerWidth > 1600) {
+                                        contactContainer.style.marginLeft = 252 + "px";
+                                } else {
+                                        contactContainer.style.marginLeft = 245 + "px";
+                                }
+                                
+                                logo.style.maxWidth = (contactLogoPosition.width / 0.075) + 'px';
+                                logo.style.minWidth = (contactLogoPosition.width / 0.075) + 'px';
+                                logo.style.minHeight = (contactLogoPosition.height / 0.075) + 'px';
+                                logo.style.maxHeight = (contactLogoPosition.height / 0.075) + 'px';
+                        }, 500);
+                }, 1500);
+        } else {
+                logo.classList.remove('shrink');
+                logo.classList.remove('hide-image');
+                logo.classList.remove('hide-no-shrink');
+                logo.classList.add('no-shrink');
+        }
+
+        contactContainer.classList.remove('hide-image-fast');
+        contactContainer.classList.add('reveal-image-fast');
+}
 
 function onScrollReveal() {
         if (checkVisibleHomeDesktop(homeInfo) && homeActive) {
@@ -66,56 +117,20 @@ function onScrollReveal() {
 
         
         if (checkVisibleDesktop(contactContainer)) {
-                initLogoTEST();
-                gifActive = true;
-                disableHover();
-                if (firstReveal) {
-                        logo.classList.remove('hide-image');
-                        logo.classList.remove('hide-image-fast');
-                        logo.classList.add('reveal-image-fast');
-
+                if (gifsRunning) {
                         setTimeout(() => {
-                                logo.classList.remove('reveal-image-fast');
-                                logo.style.opacity = '1';
-                        }, 500);
-
-                        setTimeout(() => {
-                                logo.classList.add('shrink');
-                                
-                                setTimeout(() => {
-                                        if (!typed) {
-                                                contactTypeOut(); 
-                                        }
-                                        firstReveal = false;
-
-                                        var contactLogoPosition = logo.getBoundingClientRect();
-                                        logo.style.position = 'static';
-                                        if (window.innerWidth > 1600) {
-                                                contactContainer.style.marginLeft = 252 + "px";
-                                        } else {
-                                                contactContainer.style.marginLeft = 245 + "px";
-                                        }
-                                        
-                                        logo.style.maxWidth = (contactLogoPosition.width / 0.075) + 'px';
-                                        logo.style.minWidth = (contactLogoPosition.width / 0.075) + 'px';
-                                        logo.style.minHeight = (contactLogoPosition.height / 0.075) + 'px';
-                                        logo.style.maxHeight = (contactLogoPosition.height / 0.075) + 'px';
-                                }, 500);
-                        }, 1500);
-                } else {
-                        logo.classList.remove('shrink');
-                        logo.classList.remove('hide-image');
-                        logo.classList.remove('hide-no-shrink');
-                        logo.classList.add('no-shrink');
+                                handleContact();
+                        }, 2400);
+                } 
+                else {
+                        handleContact();
                 }
-
                 
-                
-
-                contactContainer.classList.remove('hide-image-fast');
-                contactContainer.classList.add('reveal-image-fast');
         } 
         if ((!checkVisibleDesktop(contactContainer)) && gifActive) {
+                panel.classList.add('infront');
+                panel.classList.remove('behind');
+                testBoxProject.style.pointerEvents = 'none';
                 enableHover();
                 if (firstHide) {
                         logo.classList.remove('hide-image');

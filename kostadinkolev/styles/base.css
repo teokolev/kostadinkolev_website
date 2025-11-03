@@ -20,7 +20,7 @@ body {
         width: 100vw;
         position: absolute;
         /* border: solid 1px green; */
-        background: url(../assets/NOSCHT_WEBSITE_GIFS_FUTURELAND.gif);
+        /* background: url(../assets/NOSCHT_WEBSITE_GIFS_FUTURELAND.gif); */
         background-size: cover;
 }
 

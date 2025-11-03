@@ -1,5 +1,8 @@
 html {
         overflow-y: scroll;
+        &.modal-active {
+                overflow: hidden;
+        }
 }
 
 body {
@@ -7,12 +10,26 @@ body {
         background-color: black;
         position: relative;
         margin: 0;
-        /* overflow-x: hidden; */
         width: 100vw;
         height: 462vh;
         overflow-x: hidden;
         overflow-y: hidden;
+        &.modal-active {
+                overflow: hidden;
+        }
         /* border: solid 2px orange; */
+}
+
+html::-webkit-scrollbar {
+        display: none;
+}
+
+body::-webkit-scrollbar {
+        display: none;
+}
+
+.panel::-webkit-scrollbar {
+        display: none;
 }
 
 .hidden {
@@ -24,22 +41,17 @@ body {
         width: 100vw;
         position: relative;
         z-index: 100;
-        background: url('/assets/KK_HOME_MOBILE.gif');
+        background: url("/assets/KK_HOME_MOBILE.gif");
+        /* background: url("/assets/KK_HOME_MOBILE.gif"); */
         background-size: cover;
         background-position: center;
-        /* border: solid 1px green; */
-        /* opacity: 1; */
         overflow: hidden;
+        &.modal-active {
+                overflow: hidden;
+        }
 }
 
 #video-home {
-        /* position: absolute;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        object-position: center;
-        padding: 0;
-        margin: 0; */
         display: none;
 }
 
@@ -272,6 +284,15 @@ span {
         height: 362vh;
         /* border: solid 1px red; */
         overflow-y: hidden;
+        &.leave {
+                animation: fadeOut .75s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+        &.comeBack {
+                animation: fadeIn .75s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+        &.modal-active {
+                overflow: hidden;
+        }
 }
 
 .titles-mobile {
@@ -316,15 +337,20 @@ span {
         /* position: relative; */
         /* top: 300px; */
         /* left: -20px; */
-        gap: 10px;
+        /* gap: 10px; */
         /* margin-left: 20vw; */
         /* margin-right: 63vw; */
-        opacity: 1;
+        /* opacity: 1; */
         font-family: "din-2014";
         font-weight: 300;
         font-size: 12px;
         color: whitesmoke;
+        
         /* background: green; */
+}
+
+.contact > * {
+        z-index: 999999;
 }
 
 .disable-hover {
@@ -353,7 +379,7 @@ a {
 }
 
 .fullscreen-gif {
-        background: url(/assets/LOGO_MOBILE.gif);
+        background: url('/assets/LOGO_MOBILE.gif');
         background-size: cover;
         background-position: center;
         opacity: 1;
@@ -449,6 +475,9 @@ iframe {
         display: flex;
         flex-direction: row;
         color: black;
+        cursor: pointer;
+        /* position: relative;
+        z-index: 99999999; */
 }
 
 .test-box-project > div {
@@ -517,7 +546,401 @@ iframe {
         animation:         hideImage 0.5s forwards ease;
 }
 
+@keyframes unfoldIn {
+        0% {
+          transform:scaleY(.005) scaleX(0);
+        }
+        50% {
+          transform:scaleY(.005) scaleX(1);
+        }
+        100% {
+          transform:scaleY(1) scaleX(1);
+        }
+      }
+      
+      @keyframes unfoldOut {
+        0% {
+          transform:scaleY(1) scaleX(1);
+        }
+        50% {
+          transform:scaleY(.005) scaleX(1);
+        }
+        100% {
+          transform:scaleY(.005) scaleX(0);
+        }
+      }
+      
+      @keyframes zoomIn {
+        0% {
+          transform:scale(0);
+        }
+        100% {
+          transform:scale(1);
+        }
+      }
+      
+      @keyframes zoomOut {
+        0% {
+          transform:scale(1);
+        }
+        100% {
+          transform:scale(0);
+        }
+      }
+      
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      
+      @keyframes scaleUp {
+        0% {
+          transform:scale(.8) translateY(1000px);
+          opacity:0;
+        }
+        100% {
+          transform:scale(1) translateY(0px);
+          opacity:1;
+        }
+      }
+      
+      @keyframes scaleDown {
+        0% {
+          transform:scale(1) translateY(0px);
+          opacity:1;
+        }
+        100% {
+          transform:scale(.8) translateY(1000px);
+          opacity:0;
+        }
+      }
+      
+      @keyframes scaleBack {
+        0% {
+          transform:scale(1);
+        }
+        100% {
+          transform:scale(.85);
+        }
+      }
+      
+      @keyframes scaleForward {
+        0% {
+          transform:scale(.85);
+        }
+        100% {
+          transform:scale(1);
+        }
+      }
+      
+      @keyframes quickScaleDown {
+        0% {
+          transform:scale(1);
+        }
+        99.9% {
+          transform:scale(1);
+        }
+        100% {
+          transform:scale(0);
+        }
+      }
+      
+      @keyframes slideUpLarge {
+        0% {
+          transform:translateY(0%);
+        }
+        100% {
+          transform:translateY(-100%);
+        }
+      }
+      
+      @keyframes slideDownLarge {
+        0% {
+          transform:translateY(-100%);
+        }
+        100% {
+          transform:translateY(0%);
+        }
+      }
+      
+      @keyframes moveUp {
+        0% {
+          transform:translateY(0);
+        }
+        100% {
+          transform:translateY(-100vh);
+        }
+      }
+      
+      @keyframes moveDown {
+        0% {
+          transform:translateY(0px);
+        }
+        100% {
+          transform:translateY(100vh);
+        }
+      }
+      
+      @keyframes blowUpContent {
+        0% {
+          transform:scale(1);
+          opacity:1;
+        }
+        99.9% {
+          transform:scale(2);
+          opacity:0;
+        }
+        100% {
+          transform:scale(0);
+        }
+      }
+      
+      @keyframes blowUpContentTwo {
+        0% {
+          transform:scale(2);
+          opacity:0;
+        }
+        100% {
+          transform:scale(1);
+          opacity:1;
+        }
+      }
+      
+      @keyframes blowUpModal {
+        0% {
+          transform:scale(0);
+        }
+        100% {
+          transform:scale(1);
+        }
+      }
+      
+      @keyframes blowUpModalTwo {
+        0% {
+          transform:scale(1);
+          opacity:1;
+        }
+        100% {
+          transform:scale(0);
+          opacity:0;
+        }
+      }
+      
+      @keyframes roadRunnerIn {
+        0% {
+          transform:translateX(-1500px) skewX(30deg) scaleX(1.3);
+        }
+        70% {
+          transform:translateX(30px) skewX(0deg) scaleX(.9);
+        }
+        100% {
+          transform:translateX(0px) skewX(0deg) scaleX(1);
+        }
+      }
+      
+      @keyframes roadRunnerOut {
+        0% {
+          transform:translateX(0px) skewX(0deg) scaleX(1);
+        }
+        30% {
+          transform:translateX(-30px) skewX(-5deg) scaleX(.9);
+        }
+        100% {
+          transform:translateX(1500px) skewX(30deg) scaleX(1.3);
+        }
+      }
+      
+      @keyframes sketchIn {
+              0% {
+                      stroke-dashoffset: 778;
+              }
+              100% {
+                      stroke-dashoffset: 0;
+              }
+      }
+      
+      @keyframes sketchOut {
+              0% {
+                      stroke-dashoffset: 0;
+              }
+              100% {
+                      stroke-dashoffset: 778;
+              }
+      }
+      
+      @keyframes modalFadeIn {
+        0% {
+          background-color:transparent;
+        }
+        100% {
+          background-color:white;
+        }
+      }
+      
+      @keyframes modalFadeOut {
+        0% {
+          background-color:white;
+        }
+        100% {
+          background-color:transparent;
+        }
+      }
+      
+      @keyframes modalContentFadeIn {
+        0% {
+          opacity:0;
+          top:-20px;
+        }
+        100% {
+          opacity:1;
+          top:0;
+        }
+      }
+      
+      @keyframes modalContentFadeOut {
+        0% {
+          opacity:1;
+          top:0px;
+        }
+        100% {
+          opacity:0;
+          top:-20px;
+        }
+      }
+      
+      @keyframes bondJamesBond {
+        0% {
+          transform:translateX(1000px);
+        }
+        80% {
+          transform:translateX(0px);
+          border-radius:75px;
+          height:75px;
+          width:75px;
+        }
+        90% {
+          border-radius:3px;
+          height:182px;
+          width:247px;
+        }
+        100% {
+          border-radius:3px;
+          height:162px;
+          width:227px;
+        }
+      }
+      
+      @keyframes killShot {
+        0% {
+          transform:translateY(0) rotate(0deg);
+          opacity:1;
+        }
+        100% {
+          transform:translateY(300px) rotate(45deg);
+          opacity:0;
+        }
+      }
+      
+      @keyframes fadeToRed {
+        0% {
+          background-color:rgba(black,.6);
+        }
+        100% {
+          background-color:rgba(red,.8);
+        }
+      }
+      
+      @keyframes slowFade {
+        0% {
+          opacity:1;
+        }
+        99.9% {
+          opacity:0;
+          transform:scale(1);
+        }
+        100% {
+          transform:scale(0);
+        }
+      }
+
+      #modal-container {
+        /* position:fixed; */
+        /* position: relative; */
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 100vh;
+        width: 100vw;
+        /* top: 100vh; */
+        /* left: 0; */
+        /* transform:scale(1); */
+        /* z-index: 9999; */
+        /* border: solid 1px red; */
+        &.on {
+                z-index: 888;
+                /* transform: scale(1); */
+                animation: fadeIn .75s cubic-bezier(0.12, 0.960, 0.110, 1.000) forwards;
+                /* animation: fadeIn 3s  cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards; fadeIn 2s  cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards */
+                .background {
+                  background:rgba(0,0,0,0);
+
+                  .content {
+                    animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+                  }
+                }
+                + .content {
+                  z-index:1;
+                  animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+                }
+                &.out {
+                  .modal-background {
+                    .modal {
+                      animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+                    }
+                  }
+                  + .content {
+                    animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+                  }
+                }
+        }
+        .modal-background {
+                display:table-cell;
+                background:rgba(0,0,0,0);
+                position: relative;
+                text-align:center;
+                vertical-align:middle;
+                width: 500px;
+                max-width: 500px;
+                height: 500px;
+                max-height: 500px;
+                .modal {
+                  height: 100%;
+                  width: 100%;
+                };
+        }
+}
+
 @media only screen and (min-width: 500px) {
+        
+
+
+
         .mobile-container {
                 display: none;
         }
@@ -529,6 +952,9 @@ iframe {
                 height: 100%;
                 -webkit-overflow-scrolling: touch;
                 overflow-scrolling: touch;
+                &.modal-active {
+                        overflow: hidden;
+                }
         }
         body {
                 overflow-y: visible;
@@ -536,6 +962,9 @@ iframe {
                 height: unset;
                 width: unset;
                 cursor: crosshair;
+                &.modal-active {
+                        overflow: hidden;
+                }
         }
         html, body {
                 overflow-x: hidden;
@@ -804,7 +1233,15 @@ iframe {
                 height: 100vw;
                 position: fixed;
                 background: transparent;
+                &.behind {
+                        z-index: -999;
+                }
+                &.infront {
+                        z-index: 999;
+                }
+                
         }
+
         
         .red {
                 height: 100vh;
@@ -844,12 +1281,18 @@ iframe {
                 display: flex;
                 flex-direction: row;
                 color: black;
+                cursor: pointer;
+                position: relative;
+                /* z-index: 99999999; */
         }
 
         .test-box-project > div {
                 background-color: #f5f5f5;
                 border: solid 2px #f5f5f5;
                 opacity: 0;
+                /* position: relative;
+                z-index: 9999999;
+                cursor: pointer; */
         }
 
         #line-2 {
@@ -866,13 +1309,13 @@ iframe {
                 font-size: 12px;
                 color: whitesmoke;
                 gap: -2px;
-                width: 212px;
-                height: 36px;
+                width: 216px;
+                height: 30px;
                 position: absolute;
-                /* margin-left: 245px; */
-                margin-top: 20px;
+                margin-top: 11px;
                 opacity: 0;
         }
+        
 
         .contact-box {
                 height: 100vh;
@@ -903,6 +1346,7 @@ iframe {
         a {
                 text-decoration: none;
                 color: #f5f5f5;
+                cursor: pointer;
         }
         
         .fullscreen-gif {
